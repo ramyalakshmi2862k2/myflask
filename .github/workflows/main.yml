@@ -45,6 +45,7 @@ jobs:
           cp requirements.txt dist/flaskapp/
           python -m venv .venv && source .venv/bin/activate
           pip install -r requirements.txt gunicorn
+          sudo apt-get install -y zip unzip
           cd dist && zip -r myflask.zip myflask
 
      
