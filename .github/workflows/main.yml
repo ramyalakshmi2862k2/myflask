@@ -6,7 +6,7 @@ on:
  
 
 jobs:
-  lint-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,10 +35,11 @@ jobs:
         run : |
           mkdir -p dist/flaskapp
           cp -r app.py dist/flaskapp/
+          cp -r templates dist/flaskapp/
           cp requirements.txt dist/flaskapp/
           python -m venv .venv && source .venv/bin/activate
           pip install -r requirements.txt gunicorn
-          cd dist && zip -r myflask-artifact.zip myflask
+          cd dist && zip -r myflask.zip myflask
 
      
       - name: Upload artifact (ZIP)
