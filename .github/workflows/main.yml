@@ -2,7 +2,9 @@ name: python-ci
 
 on:
   push:
-    branches: feat/*
+    branches: 
+      - feat/*
+      - new_my1
  
 
 jobs:
