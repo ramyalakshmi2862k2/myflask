@@ -28,11 +28,15 @@ jobs:
           pip install -r requirements.txt
      
       - name: Run tests (pytest)
-
+        working-directory: ./myflask
+        env:
+          PYTHONPATH: .
         run: |
           pip install pytest 
-          
-          pytest conftest.py
+          working-directory: ./myflask
+
+          pytest -q
+    
 
       - name : create Artifact
         run : |
