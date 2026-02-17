@@ -29,7 +29,8 @@ jobs:
 
         run: |
           pip install pytest 
-          pytest -q
+          cd myflask
+          pytest -q 
 
       - name : create Artifact
         run : |
