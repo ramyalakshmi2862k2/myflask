@@ -1,5 +1,5 @@
 import pytest
-from home import app as flask_app
+from app import app as flask_app  # import the Flask instance, not the view
 
 @pytest.fixture()
 def app():
