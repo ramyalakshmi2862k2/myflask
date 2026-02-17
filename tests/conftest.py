@@ -1,5 +1,5 @@
 import pytest
-from app import home as flask_app
+from home import app as flask_app
 
 @pytest.fixture()
 def app():
