@@ -26,4 +26,26 @@ jobs:
           pip install -r requirements.txt
      
       - name: Run tests (pytest)
-        run: pytest -q
+
+        run: |
+          pip install pytest 
+          pytest -q
+
+      - name : create Artifact
+        run : |
+          mkdir -p dist/flaskapp
+          cp -r app.py dist/flaskapp/
+          cp requirements.txt dist/flaskapp/
+          python -m venv .venv && source .venv/bin/activate
+          pip install -r requirements.txt gunicorn
+          cd dist && zip -r myflask-artifact.zip myflask
+
+     
+      - name: Upload artifact (ZIP)
+        uses: actions/upload-artifact@v4
+        with:
+          name: myflask-artifact
+          path: dist/myflask-artifact.zip
+
+
+    
