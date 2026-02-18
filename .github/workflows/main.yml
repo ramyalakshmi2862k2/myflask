@@ -68,7 +68,7 @@ jobs:
 
 
       - name : Connect to ec2 via ssh  deploy
-        uses : appleboy/ssh-action@v1.0.3
+        uses : appleboy/ssh-action@v1
         with :
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
