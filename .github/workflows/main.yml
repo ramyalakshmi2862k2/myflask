@@ -39,7 +39,7 @@ jobs:
       - name : create Artifact
         run : |
           mkdir -p dist/
-          cp -r myflask/ dist/
+          cp -r . dist/
 
           sudo apt-get install -y zip unzip
           cd dist && zip -r myflask.zip .
