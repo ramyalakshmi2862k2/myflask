@@ -42,7 +42,9 @@ jobs:
         run : |
           mkdir -p dist/
           ls -ltr
-             # cp -r . dist/
+          cp -r ./* dist/
+          cd dist
+          ls -ltr
 
       #     sudo apt-get install -y zip unzip
       #     cd dist && zip -r myflask.zip .
