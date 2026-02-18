@@ -75,7 +75,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "dist/myflask.zip"
-          target: "/home/${{ secrets.EC2_USER }}/"
+          target: "/home/${{ secrets.EC2_USER }}/deploy/"
 
 
       - name : Connect to ec2 via ssh  deploy
@@ -86,7 +86,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
           
-            cd /home/ubuntu
+            cd /home/ubuntu/deploy
             mkdir -p app
             unzip -o myflask.zip -d app
             cd app
