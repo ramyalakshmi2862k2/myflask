@@ -94,6 +94,7 @@ jobs:
             source .venv/bin/activate
             pip install -r requirements.txt gunicorn
             python3 app.py
+            ls -ltr
          
 
 
