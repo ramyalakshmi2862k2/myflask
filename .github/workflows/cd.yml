@@ -1,0 +1,11 @@
+deploy :
+  runs-on : self-hosted
+    
+  needs: build
+
+    steps :
+      - name : Download build artifact
+        uses : actions/download-artifact@v4
+        with :
+            name: myflask-artifact
+            path: dist/myflask.zip 
