@@ -38,14 +38,22 @@ jobs:
           pytest -q
     
 
-      - name : create Artifact
-        run : |
-          mkdir -p dist
-          cd ..
-          cp -r ./myflask dist
+      # - name : create Artifact
+      #   run : |
+      #     mkdir -p dist
+      #     cd ..
+      #     cp -r ./myflask dist
 
-          sudo apt-get install -y zip unzip
-          cd dist && zip -r myflask.zip dist/
+      #     sudo apt-get install -y zip unzip
+      #     cd dist && zip -r myflask.zip dist/
+      
+      - name: Create ZIP (exclude .git, dist, etc.)
+        run: |
+          rm -rf dist
+          mkdir -p dist
+          zip -r dist/myflask.zip . \
+            -x "dist/*" ".git/*" ".github/*" "__pycache__/*" "*.pyc" "node_modules/*"
+
 
      
       - name: Upload artifact (ZIP)
