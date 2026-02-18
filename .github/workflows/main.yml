@@ -5,8 +5,6 @@ on:
     branches: 
       - feat/*
       - new_my1
- 
-
 jobs:
   build:
     runs-on: self-hosted
@@ -41,7 +39,7 @@ jobs:
         run : |
           mkdir -p dist/
           cp -r myflask/. dist/
-          
+
           sudo apt-get install -y zip unzip
           cd dist && zip -r myflask.zip .
 
@@ -51,3 +49,36 @@ jobs:
         with:
           name: myflask-artifact
           path: dist/myflask.zip
+
+      - name : Download build artifact
+        uses : actions/download-artifact@v4
+        with :
+          name: myflask-artifact
+          path: dist/
+
+      - name : Copy zip to Ec2 Server
+        uses :  appleboy/scp-action@v0.1.7
+        with :
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "dist/myflask.zip"
+          target: "/home/${{ secrets.EC2_USER }}/"
+
+
+      - name : Connect to ec2 via ssh  deploy
+        uses : appleboy/ssh-action@v1.0.3
+        with :
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+          
+            cd /home/ubuntu
+            mkdir -p app
+            unzip -o myflask.zip -d app
+            cd app
+            python -m venv .venv 
+            source .venv/bin/activate
+            pip install -r requirements.txt gunicorn
+         
