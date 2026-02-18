@@ -40,9 +40,9 @@ jobs:
 
       - name : create Artifact
         run : |
-          mkdir -p dist/
-          ls -ltr
-          cp -r ${{github.workspace}} dist/
+          mkdir -p dist
+          cd ..
+          cp -r ./myflask dist
           cd dist
           ls -ltr
 
