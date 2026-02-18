@@ -41,8 +41,7 @@ jobs:
         run : |
           mkdir -p dist/
           cp -r myflask/. dist/
-          python -m venv .venv && source .venv/bin/activate
-          pip install -r requirements.txt gunicorn
+          
           sudo apt-get install -y zip unzip
           cd dist && zip -r myflask.zip .
 
