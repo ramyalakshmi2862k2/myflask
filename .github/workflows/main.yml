@@ -5,6 +5,7 @@ on:
     branches: 
       - feat/*
       - new_my1
+      - new_my2
 jobs:
   build:
     runs-on: self-hosted
@@ -18,7 +19,7 @@ jobs:
         with:
            python-version: '3.12'
            cache: 'pip'
-           
+
 
       - name: Install dependencies
         run: |
