@@ -9,3 +9,13 @@ deploy :
         with :
             name: myflask-artifact
             path: dist/myflask.zip 
+
+      - name : create Zip
+
+      - name : Copy zip to Ec2 Server
+
+      - name : Connect to ec2 via ssh & deploy
+
+      - name : Unzip 
+      - name : Install requirements
+      - name : Run Gunicorn

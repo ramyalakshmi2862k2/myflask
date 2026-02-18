@@ -39,10 +39,8 @@ jobs:
 
       - name : create Artifact
         run : |
-          mkdir -p dist/flaskapp
-          cp -r app.py dist/flaskapp/
-          cp -r templates dist/flaskapp/
-          cp requirements.txt dist/flaskapp/
+          mkdir -p dist/
+          cp -r myflask/. dist/
           python -m venv .venv && source .venv/bin/activate
           pip install -r requirements.txt gunicorn
           sudo apt-get install -y zip unzip
