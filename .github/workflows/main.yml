@@ -35,7 +35,7 @@ jobs:
         env:
           PYTHONPATH: .
         run: |
-           pip install Flask pytest 
+          pip install Flask pytest 
     
           pytest -q
     
